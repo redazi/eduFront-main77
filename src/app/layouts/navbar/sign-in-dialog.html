@@ -1,0 +1,71 @@
+<!--SECTION LOGIN, REGISTER AND FORGOT PASSWORD-->
+
+<section >
+    <!-- LOGIN SECTION -->
+   
+        <div class="log-in-pop">
+            <div class="log-in-pop-left">
+                <h1>Hello...</h1>
+                <p>Don't have an account? Create your account. It's take less then a minutes</p>
+                <h4>Login with social media</h4>
+                <ul>
+                    <li><a href="#"><i class="fa fa-facebook"></i> Facebook</a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-google"></i> Google+</a>
+                    </li>
+                    <li><a href="#"><i class="fa fa-twitter"></i> Twitter</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="log-in-pop-right">
+                <a style="cursor: pointer;" (click)="onNoClick()" class="pop-close" data-dismiss="modal"><img src="assets/images/cancel.png" alt="">
+                </a>
+                <h4>Login</h4>
+                <p>Don't have an account? Create your account. It's take less then a minutes</p>
+
+                <form class="s12" name="editForm" [formGroup]="editForm"  *ngIf="!isLoggedIn"
+                name="form"
+                (ngSubmit)="f.form.valid && doLogin()"
+                #f="ngForm"
+                novalidate>
+                    <div class="form-group">
+                        <div
+                          class="alert alert-danger"
+                          role="alert"
+                          *ngIf="f.submitted && isLoginFailed"
+                        >
+                           {{ errorMessage }}
+                        </div>
+                      </div>
+                    <div>
+                        <div class="input-field s12">
+                            <input type="text" matInput  formControlName="username" class="validate">
+                            <label>User name</label>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="input-field s12">
+                            <input type="password"  formControlName="password" matInput  class="validate">
+                            <label>Password</label>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="s12 log-ch-bx">
+                            <p>
+                                <input type="checkbox" id="test5">
+                                <label for="test5">Remember me</label>
+                            </p>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="input-field s4">
+                            <i class="waves-effect waves-light log-in-btn waves-input-wrapper"><input type="submit" value="Login" class="waves-button-input"></i> </div>
+                    </div>
+                    <div>
+                        <div class="input-field s12"> <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#modal3">Forgot password</a> | <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#modal2">Create a new account</a> </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+</section>

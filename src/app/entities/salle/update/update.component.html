@@ -1,0 +1,68 @@
+
+<div class="col-md-12">
+  <div class="box-inn-sp admin-form">
+<div class="sb2-2-add-blog sb2-2-1">
+<h2>Ajouter une nouvelle salle</h2>
+<p>Veuillez remplire tous les champs pour ajouter une salle:</p>
+
+
+<div class="tab-content">
+
+  <div class="box-inn-sp">
+      <div class="inn-title">
+          <h4>salle Information</h4>
+          <p>Airtport Hotels The Right Way To Start A Short Break Holiday</p>
+      </div>
+      <div class="bor">
+          <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <div class="row">
+              <div class="input-field col s12"  [hidden]="salle.id===undefined" >
+                <div class="form-group"  >
+                  
+                  <input  type="text" class="form-control" id="id" name="id" [(ngModel)]="salle.id" formControlName="id" readonly>
+                  <label *ngIf="salle.id===undefined" for="id" class="">Id</label>
+                </div>
+
+              </div>
+                
+              </div>
+              <div class="row">
+                  <div class="input-field col s12">
+                    <div class="form-group"  >
+                      <input required="true" type="text" class="form-control" id="code" name="code" [(ngModel)]="salle.code" formControlName="code" class="validate">
+                      <label *ngIf="salle.id===undefined" for="code" class="">Code de la salle</label>
+
+                    </div>
+                     
+                  </div>
+                  <div class="input-field col s12">
+                    <div class="form-group"  >
+                      <input required="true" type="number" class="form-control" id="nbrPlace" name="nbrPlace" [(ngModel)]="salle.nbrPlace" formControlName="nbrPlace">
+                      <label *ngIf="salle.id===undefined" for="nbrPlace">Nombre de places de la salle</label>
+                  
+                    </div>
+                     </div>
+              </div>
+              <div class="row">
+                  <div class="input-field col s12">
+                    <div class="form-group"  >
+                      <textarea class="materialize-textarea" class="form-control" id="type" name="type" [(ngModel)]="salle.type" formControlName="type"></textarea>
+                      <label *ngIf="salle.id===undefined">Type : </label>
+                      </div>
+                  </div>
+              </div>
+                 
+              <div class="row">
+                  <div class="input-field col s12">
+                      <i class="waves-effect waves-light btn-large waves-input-wrapper" ><input type="submit" class="waves-button-input" value="Submit"></i>
+                  </div>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
+
+
+</div>
+</div>
+  </div>

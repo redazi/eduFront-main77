@@ -1,0 +1,108 @@
+<section>
+    <div class="log-in-pop">
+        <div class="log-in-pop-left" style="height: 100%;">
+            <h1>Hello...</h1>
+            <p>Don't have an account? Create your account. It's take less then a minutes</p>
+         
+        </div>
+        <div class="log-in-pop-right">
+            <a style="cursor: pointer;" (click)="onNoClick()" class="pop-close" data-dismiss="modal"><img src="assets/images/cancel.png" alt="">
+            </a>
+            <h4>Create an Account</h4>
+            <p>Don't have an account? Create your account. It's take less then a minutes</p>
+            <form class="s12" name="editForm" [formGroup]="editForm" (ngSubmit)="doRegister()" #f="ngForm">
+                <div class="form-group">
+                    <div
+                      class="alert alert-danger"
+                      role="alert"
+                      *ngIf="f.submitted && isRegisterFailedbyuser"
+                    >
+                       {{ userMessage }}
+                    </div>
+                  </div>
+                <div>
+                    <div class="input-field s12">
+                        <input type="text" data-ng-model="name1" formControlName="username" class="validate" required>
+                        <label>User name</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="input-field s12">
+                            <input type="text" data-ng-model="name1" formControlName="nom" class="validate" required>
+                            <label>Nom</label>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="input-field s12">
+                            <input type="text" data-ng-model="name1" formControlName="prenom" class="validate" required>
+                            <label>prenom</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <div class="input-field s12">
+                        <input type="number" data-ng-model="name1" formControlName="cin" class="validate" required>
+                        <label>Cin</label>
+                    </div>
+                </div>
+                <div>
+                    <div class="input-field s12">
+                        <input type="number" data-ng-model="name1" formControlName="age" class="validate" required>
+                        <label>Age</label>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div
+                      class="alert alert-danger"
+                      role="alert"
+                      *ngIf="f.submitted && isRegisterFailedbyemail"
+                    >
+                       {{ emailMessage }}
+                    </div>
+                  </div>
+                <div>
+                    <div class="input-field s12">
+                        <input type="email" class="validate" formControlName="email">
+                        <label>Email id</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="input-field s12">
+                            <input type="password" class="validate" formControlName="password">
+                            <label>Password</label>
+                        </div>
+                    </div>
+                   
+                    <div class="col-6">
+                        <div class="input-field s12">
+                            <input type="password" class="validate" formControlName="passconf">
+                            <label>Confirm password</label>
+                        </div>
+                    </div>
+
+                </div>
+                 <div class="form-group">
+                        <div
+                          class="alert alert-danger"
+                          role="alert"
+                          *ngIf="f.submitted && !isPasswordVerified"
+                        >
+                           {{ passMessage }}
+                        </div>
+                      </div>
+                
+                <div>
+                    <div class="input-field s4">
+                        <i class="waves-effect waves-light log-in-btn waves-input-wrapper"><input type="submit" value="Register" class="waves-button-input"></i> </div>
+                </div>
+                <div>
+                    <div class="input-field s12"> <a href="#" data-dismiss="modal" data-toggle="modal" data-target="#modal1">Are you a already member ? Login</a> </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    </section>

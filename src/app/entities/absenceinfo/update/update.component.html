@@ -1,0 +1,82 @@
+<div class="box-inn-sp">
+    <div class="inn-title">
+        <h4>Etudiants Details</h4>
+        <p>All about Etudiants, program structure, fees, best course lists (ranking), syllabus, teaching techniques and other details.</p>
+    
+    </div>
+
+    
+    <div class="tab-inn">
+        <div class="table-responsive table-desi">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                      <tr>
+                        <th > image</th>    
+                        <th > userName</th>    
+                        <th > password</th>    
+                        <th > nom</th>    
+                        <th > prenom</th>  
+                        <th > age</th>  
+                        <th > email</th>  
+                        <th > cin</th> 
+
+                     
+
+<th>Actions</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let client of etudiants ">
+                        <td> <img [src]="client.picByte" width="170" height="140">
+                        </td>
+                        
+                        <td >{{client.userName}}</td>
+                        <td >{{client.password}}</td>
+                        <td >{{client.nom}}</td>
+                        <td >{{client.prenom}}</td>
+                        <td >{{client.age}}</td>
+                        <td >{{client.email}}</td>
+                        <td >{{client.cin}}</td>
+             
+                    
+              
+                        <td>
+              
+                            <button type="submit"  id={{client.id}}  (click)="onclick(client.id,client.cin)" class=" btn btn-success" data-cy="entityDeleteButton">
+                                <i class="fa-solid fa-p"></i>
+                            </button>
+
+
+                            <button type="submit" id={{client.cin}}  (click)="onclick1(client.id,client.cin)" class="btn btn-danger m-3" data-cy="entityDeleteButton">
+                                <i class="fa-solid fa-a"></i>
+                            </button>
+                          
+
+
+                        </td>
+                    
+                      
+          
+                    </tr>
+                   
+                </tbody>
+            </table>
+        
+        </div>
+   
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="input-field col s12">
+        <i class="waves-effect waves-light btn-large waves-input-wrapper" ><input type="submit" (click)="onclick2()" class="waves-button-input" value="Submit"></i>
+    </div>
+</div>
+
+
+
+
+

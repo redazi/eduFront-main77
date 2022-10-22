@@ -1,0 +1,37 @@
+
+<div class="container">
+    <div class="col-md-8 offset-md-2">
+      <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+        <div class="row">
+            <div class="input-field col s6" [hidden]="creneau.id===undefined">
+                <input type="text" class="form-control"  id="id" name="id" [(ngModel)]="creneau.id" formControlName="id" readonly>
+                <label class="">Id</label>
+            </div>
+        </div>
+           
+        
+        <div class="row">
+            <label >heure Debut</label>
+            <div class="ngx-timepicker-field-example">
+                <ngx-timepicker-field [format]="24"  [defaultTime]="'23:11'" class="form-control" id="heureDebut" name="heureDebut" [(ngModel)]="creneau.heureDebut" formControlName="heureDebut" required></ngx-timepicker-field>
+            </div>
+            
+        </div>
+        <input mdc-datetime-picker="" date="false" time="true" seconds="true" type="text"
+        id="time3" placeholder="Time" minutes="true" auto-ok="true" min-date="minDateNow"
+        minute-steps="1" format="HH:mm:ss" short-time="false" ng-model="time" class=" md-input">
+        <div class="row">
+            <label >heure fin</label>
+            <div class="ngx-timepicker-field-example">
+                <ngx-timepicker-field [format]="24" [defaultTime]="'23:11'" class="form-control" id="heureFin" name="heureFin" [(ngModel)]="creneau.heureFin" formControlName="heureFin" required></ngx-timepicker-field>
+            </div>
+            
+        </div>
+
+
+        <button class="btn btn-info m-3" type="submit"> Enregistrer </button>
+
+    </form>
+    
+    </div>
+</div>

@@ -1,0 +1,74 @@
+<div class="box-inn-sp">
+  <div class="inn-title">
+      <h4>Course Details</h4>
+      <p>All about courses, program structure, fees, best course lists (ranking), syllabus, teaching techniques and other details.</p>
+  </div>
+  <div class="form-group">
+    <div
+      class="alert alert-danger"
+      role="alert"
+      *ngIf="isDeleteFailed===true"
+    >
+    <h5>
+      <img src="/assets/images/failed.gif" width="20px">
+      {{ errorMessage }}
+    </h5>
+      
+    </div>
+    <div
+    class="alert alert-success"
+    role="alert"
+    *ngIf="isDeleteSucces===true"
+  >
+  <h5>
+    <img src="/assets/images/ok.gif" width="20px">
+    {{ succesMessage }}
+  </h5>
+     
+  </div>
+  </div>
+  <div class="tab-inn">
+      <div class="table-responsive table-desi">
+          <table class="table table-hover">
+              <thead>
+                  <tr>
+                    <tr>
+      <tr>
+            <th > image</th>    
+            <th > Nom</th>  
+            <th style=" width: 100px;"  > Description </th>     
+            <th>actions</th>
+          </tr>
+        </thead>
+        <tbody>
+           <tr *ngFor="let formation of formations | filter: searchText" style="height:10px !important">
+            <td><span class="list-img"><img src="/assets/images/books.png" alt=""></span>
+            </td>
+            <td >{{formation.nom}}</td>
+            <td >{{formation.description}}</td>
+
+    
+  
+            <td> <button type="button" [routerLink]="['/dashboard/formation', formation.id, 'view']" class="btn btn-primary m-3" data-cy="entityDetailsButton">
+            
+              <i class="far fa-eye"></i>
+            </button>
+          
+            
+ <button type="submit" [routerLink]="['/dashboard/formation', formation.id]" class="btn btn-success m-3" data-cy="entityEditButton">
+
+  <i class="fas fa-edit"></i> 
+</button>
+
+
+
+<button type="submit" (click)="delete(formation.id)" class="btn btn-danger m-3" data-cy="entityDeleteButton">
+  <i class="far fa-trash-alt"></i> 
+</button>
+</td>
+          </tr>
+        </tbody>
+    </table>
+    </div>
+    </div>
+    </div>

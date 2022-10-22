@@ -1,0 +1,104 @@
+
+          <div class="box-inn-sp">
+            <div class="inn-title">
+                <h4>Course Details</h4>
+                <p>All about courses, program structure, fees, best course lists (ranking), syllabus, teaching techniques and other details.</p>
+            
+            </div>
+            <div class="form-group">
+              <div
+                class="alert alert-danger"
+                role="alert"
+                *ngIf="isDeleteFailed===true"
+              >
+              <h5>
+                <img src="/assets/images/failed.gif" width="20px">
+                {{ errorMessage }}
+              </h5>
+                
+              </div>
+              <div
+              class="alert alert-success"
+              role="alert"
+              *ngIf="isDeleteSucces===true"
+            >
+            <h5>
+              <img src="/assets/images/ok.gif" width="20px">
+              {{ succesMessage }}
+            </h5>
+               
+            </div>
+            </div>
+            
+            <div class="tab-inn">
+                <div class="table-responsive table-desi">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                              <tr>
+                                <th > image</th>    
+                                <th > userName</th>    
+                                <th > password</th>    
+                                <th > nom</th>    
+                                <th > prenom</th>  
+                                <th > age</th>  
+                                <th > email</th>  
+                                <th > cin</th> 
+                        
+                                <th > salaire</th> 
+                                <th > dernier Paiement</th> 
+                             
+      
+      <th>Actions</th>
+     
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let formateur of formateurs | filter: searchText">
+                                <td> <img [src]="formateur.picByte" width="170" height="140">
+                                </td>
+                                
+                                <td >{{formateur.userName}}</td>
+                                <td >{{formateur.password}}</td>
+                                <td >{{formateur.nom}}</td>
+                                <td >{{formateur.prenom}}</td>
+                                <td >{{formateur.age}}</td>
+                                <td >{{formateur.email}}</td>
+                                <td >{{formateur.cin}}</td>
+                                <td >{{formateur.salaire}}</td>
+                                <td >{{formateur.dernierPaiement}}</td>
+                              
+                              <td> <button type="button" [routerLink]="['/dashboard/formateur', formateur.id, 'details']" class="btn btn-primary m-3" data-cy="entityDetailsButton">
+          
+                                <i class="far fa-eye"></i>
+                              </button>
+                            
+                              
+                   <button type="submit" [routerLink]="['/dashboard/formateur', formateur.id]" class="btn btn-success m-3" data-cy="entityEditButton">
+                  
+                    <i class="fas fa-edit"></i> 
+                  </button>
+                  
+                  
+                  
+                  <button type="submit" (click)="delete(formateur.id)" class="btn btn-danger m-3" data-cy="entityDeleteButton">
+                    <i class="far fa-trash-alt"></i> 
+                  </button>
+                  </td>
+                            </tr>
+                           
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+         
+         
+    

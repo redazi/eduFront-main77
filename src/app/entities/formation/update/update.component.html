@@ -1,0 +1,95 @@
+
+<div class="row">
+  <div class="col-12">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="box-inn-sp admin-form">
+      <div class=" sb2-2-1">
+      <h2>Ajouter une nouvelle formation</h2>
+      <p>Veuillez remplire tous les champs pour ajouter une formation:</p>
+      
+      
+      <div class="tab-content">
+      
+        <div class="box-inn-sp">
+            <div class="inn-title">
+                <h4>Course Information</h4>
+                <p>Airtport Hotels The Right Way To Start A Short Break Holiday</p>
+            </div>
+            <div class="bor">
+                <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+                  <div class="row">
+                    <div class="input-field col s12"  [hidden]="formation.id===undefined" >
+                      <div class="form-group"  >
+                        
+                        <input  type="text" class="form-control" id="id" name="id" [(ngModel)]="formation.id" formControlName="id" readonly>
+                        <label *ngIf="formation.id===undefined" for="id" class="">Id</label>
+                      </div>
+      
+                    </div>
+                      
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                          <div class="form-group"  >
+                            <input type="text" class="form-control" id="nom" name="nom" [(ngModel)]="formation.nom" formControlName="nom" class="validate">
+                            <label *ngIf="formation.id===undefined" for="nom" class="">Nom de la formation</label>
+      
+                          </div>
+                           
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                          <div class="form-group"  >
+                            <textarea class="materialize-textarea" id="description" name="description" [(ngModel)]="formation.description" formControlName="description"></textarea>
+                            <label *ngIf="formation.id===undefined">Descriptions: </label>
+                            </div>
+                        </div>
+                    </div>
+                       
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="waves-effect waves-light btn-large waves-input-wrapper" ><input type="submit" class="waves-button-input" value="Enregistrer"></i>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <app-formmatiereupdate [idf]="id"></app-formmatiereupdate>
+
+            <app-formmatieredetail *ngIf="id" [idf]="id"></app-formmatieredetail>
+        </div>
+      </div>
+
+      
+      
+      
+      </div>
+      </div>
+        </div>
+
+        
+    
+    </div>
+    
+    <div class="row">
+    
+     
+     
+      
+       
+       
+    </div>
+    <div class="row" >
+    
+     
+    </div>
+  </div>
+ 
+  
+</div>
+
+
+  

@@ -1,0 +1,68 @@
+
+      <div class="inn-title">
+          <h4>Affecter une matiere a une formation</h4>
+          <p>Airtport Hotels The Right Way To Start A Short Break Holiday</p>
+      </div>
+      <div class="bor">
+          <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <div class="row">
+              <div class="input-field col s12"  [hidden]="formMatiere.id===undefined" >
+                <div class="form-group"  >
+                  
+                  <input  type="text" class="form-control" id="id" name="id" [(ngModel)]="formMatiere.id" formControlName="id" readonly>
+                  <label *ngIf="formMatiere.id===undefined" for="id" class="">Id</label>
+                </div>
+
+              </div>
+                
+              </div>
+              <div class="row">
+                 
+                  <div class="input-field col s12">
+                    <div class="form-group"  >
+                      <mat-form-field appearance="fill" >
+
+                          <mat-label>Formation</mat-label>
+                          <mat-select 
+                         
+                          [disabled]="idf!==undefined"
+                             [compareWith]="compareObjects"
+                             [(value)]="sFormation" class="form-control" 
+                             id="formation" 
+                             data-cy="formation" 
+                             name="formation" 
+                             formControlName="formation" 
+                             (selectionChange)="onChange($event)"
+                             >
+                          <mat-option>None</mat-option>
+                          <mat-option selected="sFormation.id===formation.id" *ngFor="let formation of formations" [value]="formation">{{formation.nom}} </mat-option>
+                          </mat-select>
+                      </mat-form-field>
+              </div>
+                     </div>
+              </div>
+              <div class="row">
+                  <div class="input-field col s12">
+                  <div class="form-group" >
+          <label class="form-label" for="matiere">Matieres</label>
+          <ng-multiselect-dropdown
+                [(ngModel)]="selectedItemsRoot"
+                [placeholder]="'Choisir les matieres de la formation'"
+                [settings]="dropdownSettings"
+                [data]='dropdownList'
+               
+                class="form-control" id="matiere" data-cy="matiere" name="matiere" formControlName="matiere"
+              >
+              </ng-multiselect-dropdown>
+        </div>
+                  </div>
+              </div>
+                 
+              <div class="row">
+                  <div class="input-field col s12">
+                      <i class="waves-effect waves-light btn-large waves-input-wrapper" ><input type="submit" class="waves-button-input" value="Submit"></i>
+                  </div>
+              </div>
+          </form>
+      </div>
+  

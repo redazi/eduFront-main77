@@ -1,0 +1,52 @@
+<p>time-picker works!</p>
+<section class="time-picker" ontouchstart>
+    <header>
+      <div class="time-hhmm">
+        <label>
+          <input
+            type="radio"
+            name="hhmm"
+            value="hh"
+            [(ngModel)]="hhmm"
+            (ngModelChange)="auto = false"
+          />
+          <span [innerText]="hour"></span>
+        </label>
+        <span>:</span>
+        <label>
+          <input type="radio" name="hhmm" value="mm" [(ngModel)]="hhmm" />
+          <span [innerText]="minute"></span>
+        </label>
+      </div>
+      <div class="time-ampm">
+        <label>
+          <input type="radio" name="ampm" value="am" [(ngModel)]="ampm" />
+          <span>AM</span>
+        </label>
+        <label>
+          <input type="radio" name="ampm" value="pm" [(ngModel)]="ampm" />
+          <span>PM</span>
+        </label>
+      </div>
+    </header>
+    <article>
+      <div class="time-dial">
+        <label *ngFor="let item of dial" [ngStyle]="item">
+          <input
+            type="radio"
+            name="time"
+            [value]="item[hhmm]"
+            [ngModel]="hhmm === 'hh' ? hour : minute"
+            (ngModelChange)="timeChange($event)"
+          />
+          <div [innerText]="item[hhmm]"></div>
+        </label>
+        <div class="hand" [style.transform]="rotateHand()"></div>
+      </div>
+    </article>
+    <footer>
+      <button (click)="cancel()">Cancel</button>
+      <button (click)="ok()">Ok</button>
+    </footer>
+  </section>
+  

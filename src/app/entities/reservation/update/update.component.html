@@ -1,0 +1,185 @@
+<div class="col-md-12">
+  <div class="box-inn-sp admin-form">
+<div class="sb2-2-add-blog sb2-2-1">
+<h2>Planification d'une matière</h2>
+<p>Veuillez remplire tous les champs pour planifier une matière:</p>
+
+
+<div class="tab-content">
+
+  <div class="box-inn-sp">
+      <div class="inn-title">
+          <h4>Course Information</h4>
+          <p>Airtport Hotels The Right Way To Start A Short Break Holiday</p>
+      </div>
+      <div class="bor">
+          <form name="editForm" role="form" validate (ngSubmit)="save()" [formGroup]="editForm">
+            <div class="row">
+              <div class="input-field col s12"  [hidden]="reservation.id===undefined" >
+                <div class="form-group"  >
+                  
+                  <input type="text" class="form-control" id="id" name="id" [(ngModel)]="reservation.id" formControlName="id" readonly>
+                  <label *ngIf="reservation.id===undefined" for="id" class="">Id</label>
+                </div>
+
+              </div>
+                
+              </div>
+              <div class="row" >
+                  <div class="input-field col s12">
+                    <div class="form-group"  >
+                      <mat-form-field appearance="fill" style="width:100%"  >
+                        <mat-label></mat-label>
+                        <mat-select required="true" class="form-control"  id="formateur" [compareWith]="compareObjects" [(value)]="reservation.formateur" data-cy="formateur" name="formateur" formControlName="formateur">
+                       
+                        <mat-option *ngFor="let formateur of Formateurs" [value]="formateur">{{formateur.nom}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <label *ngIf="reservation.id===undefined" for="nom" class="">Formateur</label>
+                    
+
+                    </div>
+                   </div>
+                   <div class="row">  
+                  </div>
+                  <div class="input-field col s12">
+                    <div class="form-group"  >
+                      <mat-form-field appearance="fill" style="width:100%">
+                        <mat-label></mat-label>
+                        <mat-select (selectionChange)="getCreneaux()" class="form-control" [compareWith]="compareObjects" [(value)]="reservation.salle" id="salle" data-cy="salle" name="salle" formControlName="salle">
+                        <mat-option  *ngFor="let salle of salles" [value]="salle">{{salle.code}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>                      
+                    <label *ngIf="reservation.id===undefined" for="libelle">Salle</label>
+                  
+                    </div>
+                     </div>
+              </div>
+              <div class="row">
+                  <div class="input-field col s12">
+                    <div class="form-group"  >
+                      <mat-form-field appearance="fill" style="width:100%">
+                        <mat-label></mat-label>
+                        <mat-select class="form-control" id="creneau" data-cy="creneau" [compareWith]="compareObjects" [(value)]="reservation.creneau" name="creneau" formControlName="creneau">
+                        <mat-option *ngFor="let creneau of creneaux" [value]="creneau">{{creneau.heureDebut}} - {{creneau.heureFin}}</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                  <label *ngIf="reservation.id===undefined">Creneau</label>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="row">
+                <div class="input-field col s12">
+                  <div class="form-group"  >
+                    <mat-form-field appearance="fill" style="width:100%">
+                      <mat-label></mat-label>
+                      <mat-select class="form-control" id="matiere" data-cy="matiere" [compareWith]="compareObjects" [(value)]="reservation.matiere" name="matiere" formControlName="matiere">
+                      <mat-option *ngFor="let matiere of matieres" [value]="matiere">{{matiere.nom}}</mat-option>
+                      </mat-select>
+                  </mat-form-field>
+                <label *ngIf="reservation.id===undefined">Matiere</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" *ngIf="reservation.id!==undefined">
+              <div class="input-field col s12">
+                <div class="form-group"  >
+                  <input type="date" class="form-control" id="date" name="date"  [(ngModel)]="reservation.date" formControlName="date">
+              <label *ngIf="reservation.id===undefined">Date de Debut</label>
+                  </div>
+              </div>
+          </div>
+
+          <div class="row">
+            <div class="input-field col s12">
+              <div class="form-group"  >
+               <input type="date" class="form-control" id="datefin" name="datefin" min="{{data | date:'yyyy-MM-dd'}}" [(ngModel)]="reservation.datefin" formControlName="datefin">
+
+            <label *ngIf="reservation.id===undefined">Date de fin</label>
+                </div>
+            </div>
+        </div>
+                 
+              <div class="row">
+                  <div class="input-field col s12">
+                      <i class="waves-effect waves-light btn-large waves-input-wrapper" ><input type="submit" class="waves-button-input" value="Submit"></i>
+                  </div>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
+
+
+</div>
+</div>
+  </div>
+
+<!--<div class="container">
+    <div class="col-md-8 offset-md-2">
+      <form  name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+        <div class="form-group" [hidden]="reservation.id===undefined" >
+          <label>id </label>
+          <input type="text" class="form-control" id="id" name="id" [(ngModel)]="reservation.id" formControlName="id" readonly>
+        </div>
+        
+        <div class="form-group">
+            <label>formateur </label>
+            <mat-form-field appearance="fill" >
+                <mat-label></mat-label>
+                <mat-select class="form-control"  id="formateur" data-cy="formateur" name="formateur" formControlName="formateur">
+               
+                <mat-option *ngFor="let formateur of Formateurs" [value]="formateur">{{formateur.nom}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+          </div>
+         
+          <div class="form-group">
+            <label>salle </label>
+            <mat-form-field appearance="fill" >
+                <mat-label></mat-label>
+                <mat-select class="form-control" id="salle" data-cy="salle" name="salle" formControlName="salle">
+                <mat-option *ngFor="let salle of salles" [value]="salle">{{salle.code}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <label>creneau </label>
+            <mat-form-field appearance="fill" >
+                <mat-label></mat-label>
+                <mat-select class="form-control" id="creneau" data-cy="creneau" name="creneau" formControlName="creneau">
+                <mat-option *ngFor="let creneau of creneaux" [value]="creneau">{{creneau.heureDebut}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <label>matiere</label>
+            <mat-form-field appearance="fill" >
+                <mat-label></mat-label>
+                <mat-select class="form-control" id="matiere" data-cy="matiere" name="matiere" formControlName="matiere">
+                <mat-option *ngFor="let matiere of matieres" [value]="matiere">{{matiere.nom}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+          </div>
+                
+          <div class="form-group">
+            <label>Date </label>
+            <input type="date" class="form-control" id="date" name="date" [(ngModel)]="salleReservation.date" formControlName="date">
+          </div>
+
+          <div class="form-group">
+            <label>Date fin </label>
+            <input type="date" class="form-control" id="datefin" name="datefin" [(ngModel)]="reservation.datefin" formControlName="date">
+          </div>
+  
+  
+      
+  
+        <button class="btn btn-info m-3" type="submit"> Enregistrer </button>
+      </form>
+    </div>
+</div>
+
+-->

@@ -1,0 +1,86 @@
+          <div class="box-inn-sp">
+              <div class="inn-title">
+                  <h4>Course Details</h4>
+                  <p>All about courses, program structure, fees, best course lists (ranking), syllabus, teaching techniques and other details.</p>
+              
+              </div>
+              <div class="form-group">
+                <div
+                  class="alert alert-danger"
+                  role="alert"
+                  *ngIf="isDeleteFailed===true"
+                >
+                <h5>
+                  <img src="/assets/images/failed.gif" width="20px">
+                  {{ errorMessage }}
+                </h5>
+                  
+                </div>
+                <div
+                class="alert alert-success"
+                role="alert"
+                *ngIf="isDeleteSucces===true"
+              >
+              <h5>
+                <img src="/assets/images/ok.gif" width="20px">
+                {{ succesMessage }}
+              </h5>
+                 
+              </div>
+              </div>
+              
+              <div class="tab-inn">
+                  <div class="table-responsive table-desi">
+                      <table class="table table-hover">
+                          <thead>
+                              <tr>
+                                <tr>
+                                  <th > image</th>    
+                                  <th > nom</th>    
+                                  <th > libelle</th>    
+        
+  
+                               
+        
+        <th>Actions</th>
+       
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr *ngFor="let matiere of matieres | filter: searchText">
+                                <td><span class="list-img"><img src="/assets/images/study.png" alt=""></span>
+                                </td>
+                                <td ><span class="list-enq-name"> {{matiere.nom}} </span></td>
+                                <td >{{matiere.libelle}}</td>
+                                
+                                <td> <button type="button" [routerLink]="['/dashboard/matiere', matiere.id, 'details']" class="btn btn-primary m-3" data-cy="entityDetailsButton">
+            
+                                  <i class="far fa-eye"></i>
+                                </button>
+                              
+                                
+                     <button type="submit" [routerLink]="['/dashboard/matiere', matiere.id]" class="btn btn-success m-3" data-cy="entityEditButton">
+                    
+                      <i class="fas fa-edit"></i> 
+                    </button>
+                    
+                    
+                    
+                    <button type="submit" (click)="delete(matiere.id)" class="btn btn-danger m-3" data-cy="entityDeleteButton">
+                      <i class="far fa-trash-alt"></i> 
+                    </button>
+                    </td>
+                              </tr>
+                             
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+
+
+
+
+
+  
+

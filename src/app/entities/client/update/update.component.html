@@ -1,0 +1,139 @@
+
+              
+                   
+                 
+                 
+                  
+    
+<div class="col-md-12">
+  <div class="box-inn-sp admin-form">
+<div class="sb2-2-add-blog sb2-2-1">
+<h2>Ajouter une nouveau etudiant</h2>
+<p>Veuillez remplire tous les champs pour ajouter une matière:</p>
+
+
+<div class="tab-content">
+
+  <div class="box-inn-sp">
+      <div class="inn-title">
+          <h4>etudiant Information</h4>
+          <p>Airtport Hotels The Right Way To Start A Short Break Holiday</p>
+      </div>
+      <div class="bor">
+          <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <div class="row">
+              <div class="input-field col s12"  [hidden]="client.id===undefined" >
+                <div class="form-group"  >
+                  
+                  <input  type="text" class="form-control" id="id" name="id" [(ngModel)]="client.id" formControlName="id" readonly>
+                  <label *ngIf="client.id===undefined" for="id" class="">Id</label>
+                </div>
+
+              </div>
+                
+              </div>
+              <div class="row">
+                  <div class="input-field col s12">
+                    <div class="form-group"  >
+                      <input required="true" type="text" class="form-control" id="nom" name="nom" [(ngModel)]="client.nom" formControlName="nom" class="validate">
+                      <label *ngIf="client.id===undefined" for="nom" class="">Nom de l'etudiant</label>
+
+                    </div>
+                     
+                  </div>
+                  <div class="input-field col s12">
+                    <div class="form-group"  >
+                      <input required="true" type="text" class="form-control" id="prenom" name="prenom" [(ngModel)]="client.prenom" formControlName="prenom">
+                      <label *ngIf="client.id===undefined" for="libelle">prenom de l'etudiant</label>
+                  
+                    </div>
+                     </div>
+                     
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <div class="form-group"  >
+                    <input required="true" type="text" class="form-control" id="password" name="password" [(ngModel)]="client.password" formControlName="password" class="validate">
+                    <label *ngIf="client.id===undefined" for="nom" class="">password de l'etudiant</label>
+
+                  </div>
+                   
+                </div>
+                <div class="input-field col s12">
+                  <div class="form-group"  >
+                    <input required="true" type="text" class="form-control" id="userName" name="userName" [(ngModel)]="client.userName" formControlName="userName">
+                    <label *ngIf="client.id===undefined" for="libelle">userName de l'etudiant</label>
+                
+                  </div>
+                   </div>
+             
+                   
+            </div>
+       
+            <div class="row">
+              <div class="input-field col s12">
+                <div class="form-group"  >
+                  <input required="true" type="number" class="form-control" id="age" name="age" [(ngModel)]="client.age" formControlName="age" class="validate">
+                  <label *ngIf="client.id===undefined" for="nom" class="">age de l'etudiant</label>
+
+                </div>
+                 
+              </div>
+              <div class="input-field col s12">
+                <div class="form-group"  >
+                  <input required="true" type="text" class="form-control" id="cin" name="cin" [(ngModel)]="client.cin" formControlName="cin">
+                  <label *ngIf="client.id===undefined" for="libelle">cin de l'etudiant</label>
+              
+                </div>
+                 </div>
+                 
+          </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <div class="form-group"  >
+                  <input required="true" type="text" class="form-control" id="email" name="email" [(ngModel)]="client.email" formControlName="email">
+                  <label *ngIf="client.id===undefined" for="libelle">email de l'etudiant</label>
+              
+                </div>
+                 </div>
+              <div class="input-field col s12">
+                <div class="form-group"  >
+                  <input required="true" type="text" class="form-control" id="active" name="active" [(ngModel)]="client.active" formControlName="active" class="validate">
+                  <label *ngIf="client.id===undefined" for="nom" class="">status de l'etudiant</label>
+
+                </div>
+                 
+              </div>
+          
+          </div>
+              <div class="row">
+                  <div class="input-field col s12">
+                    <div class="form-group"  >
+                      <input type="file"  (change)="onFileChanged($event)">
+                      <img [src]="imgURL" height="200" *ngIf="imgURL">   
+                       
+                     
+                      </div>
+                  </div>
+
+
+
+                  
+              </div>
+             
+             
+                 
+              <div class="row">
+                  <div class="input-field col s12">
+                      <i class="waves-effect waves-light btn-large waves-input-wrapper" ><input type="submit" class="waves-button-input" value="Submit"></i>
+                  </div>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>
+
+
+</div>
+</div>
+  </div>

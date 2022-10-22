@@ -1,0 +1,10 @@
+<h1 mat-dialog-title> <img src="/assets/images/failed.gif"  width="60px">Vous pouvez pas faire cette reservation!</h1>
+<div mat-dialog-content>
+  <h4>
+    il exist deja une reseravtion ce cette salle ( {{salle?.code}} ) dans la date {{date}} en meme creneau({{creneau?.heureDebut}} - {{creneau?.heureFin}}).
+  </h4>
+ 
+</div>
+<div mat-dialog-actions>
+  <button class="btn btn-info m-3 pr-5"(click)="non()">retour</button>
+</div>
