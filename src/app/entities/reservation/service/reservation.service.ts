@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import { SalleReservation } from '../../salle-reservation/salle-reservation.model';
+import { Plannification } from '../plannification.model';
 import { Reservation } from '../reservation.model';
 
 @Injectable({
@@ -30,7 +31,9 @@ export class ReservationService {
 
     return this.httpClient.post(`${this.baseURL}/extend` , reservation );
   }
-
+  getplanification(id:any):Observable<Plannification>{
+    return this.httpClient.get<Plannification>(`http://localhost:4900/plannifiaction/${id}`)
+  }
   get(id:number):Observable<Reservation>{
     return this.httpClient.get<Reservation>(`${this.baseURL}/${id}`)
   }

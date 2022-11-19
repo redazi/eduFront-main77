@@ -7,11 +7,13 @@ import { Login } from 'src/app/auth/login.model';
 
 import { LoginService } from 'src/app/auth/login.service';
 import { TokenStorageService } from 'src/app/auth/token-storage.service';
+import { Client } from 'src/app/entities/client/client.model';
 import { Register } from 'src/app/signup/register.model';
 import { SignupService } from 'src/app/signup/signup.service';
 export interface DialogData {
   username: string;
   password: string;
+
 }
 @Component({
   selector: 'sign-in',
@@ -65,7 +67,14 @@ export class SignInDialog {
   templateUrl: 'sign-up-dialog.html',
 })
 export class SignUpDialog {
-
+  reader : any;
+  picBytes : any;
+  selectedFile!: File;
+  imgURL: any;
+  retrievedImage: any;
+  base64Data: any;
+  client: Client = new Client();
+  retrieveResonse: any;
   editForm = this.fb.group({
     username: [],
     email: [],
@@ -73,6 +82,7 @@ export class SignUpDialog {
     prenom : [],
     cin:[],
     age : [] ,
+    
     password: [] ,
     passconf: [] ,
     },
@@ -98,7 +108,32 @@ export class SignUpDialog {
   onNoClick(): void {
     this.dialogRef.close();
   }
+  public onFileChanged(event: any) {
+    //Select File
+    this.selectedFile = event.target.files[0];
+    console.log("haa hiiyaaa lfile  "+ this.selectedFile.name);
+    console.log("haa hiiyaaa sizee "+ this.selectedFile?.size);
+    this.handleFileSelect(event);
 
+  }
+  handleFileSelect(evt : any){
+    var files = evt.target.files;
+    var file = files[0];
+  
+  if (files && file) {
+      var reader = new FileReader();
+
+      reader.onload =this._handleReaderLoaded.bind(this);
+
+      reader.readAsBinaryString(file);
+  }
+}
+
+_handleReaderLoaded(readerEvt : any) {
+   var binaryString = readerEvt.target.result;
+          this.client.picByte= btoa(binaryString);
+          console.log("lakhraaaaaaaaa :"+this.client.picByte);
+  }
   doRegister() : void {
     if (!this.editForm?.valid) {
       
@@ -118,7 +153,8 @@ export class SignUpDialog {
                                              this.editForm.get(['prenom'])!.value,
                                              this.editForm.get(['cin'])!.value, 
                                              this.editForm.get(['age'])!.value , 
-                                             this.editForm.get(['password'])!.value))
+                                             this.editForm.get(['password'])!.value,
+                                             this.client.picByte!))
                                              .subscribe(
       (  data: { accessToken: string; }) => {
        

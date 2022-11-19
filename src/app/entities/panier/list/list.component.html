@@ -36,9 +36,12 @@
                     <tr>
                       <tr>
                         <th > image</th>  
-                        <th > Formation</th>    
-                        <th > client</th>    
-                      
+                        <th > Planification</th>    
+                        <th > Client</th>    
+                        <th > reservation</th>
+                        <th > Data de reservation</th >
+                          <th > nom du matiere</th >
+                            <th > nom du Formateur</th >
 
 
                      
@@ -48,12 +51,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let panier of paniers | filter: searchText">
-                      <td><span class="list-img"><img src="/assets/images/study.png" alt=""></span>
+                    <tr *ngFor="let panier of paniers   | filter: searchText ;let i=index">
+                      <ng-container *ngFor="let res of panier.reservations">
+                      <td > <span class="list-img"><img src="/assets/images/study.png" alt=""></span>
                       </td>
-                      <td ><span class="list-enq-name"> {{panier.formation.nom}} </span></td>
-                      <td >{{panier.client.nom}}</td>
-                      
+                      <td ><span class="list-enq-name"> {{panier.planification.id}} </span></td>
+                      <td >{{panier.client.userName}}</td>
+                      <td >{{res.id}}</td>
+                      <td >{{res.date}}</td>
+                      <td >{{res.matiere.nom}}</td>
+                      <td >{{res.formateur.nom}}</td>
                       <td> <button type="button" [routerLink]="['/dashboard/panier', panier.id, 'details']" class="btn btn-primary m-3" data-cy="entityDetailsButton">
   
                         <i class="far fa-eye"></i>
@@ -67,10 +74,11 @@
           
           
           
-          <button type="submit" (click)="delete(panier.id)" class="btn btn-danger m-3" data-cy="entityDeleteButton">
+          <button type="submit" (click)="delete(panier.id!)" class="btn btn-danger m-3" data-cy="entityDeleteButton">
             <i class="far fa-trash-alt"></i> 
           </button>
           </td>
+        </ng-container>
                     </tr>
                    
                 </tbody>

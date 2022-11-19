@@ -18,6 +18,9 @@ export class AbsenceinfoService {
   list():Observable<Absenceinfo[]>{
     return this.httpClient.get<Absenceinfo[]>(`${this.baseURL}`);
   }
+  checkUnmarkedAbsence(id:number):Observable<Absenceinfo[]>{
+    return this.httpClient.get<Absenceinfo[]>(`${this.baseURL}/checkunmarkedabsence/${id}`);
+  }
   listEtudiant(id:number):Observable<Client[]>{
     return this.httpClient.get<Client[]>(`${this.baseURL}/listeEtudiant/${id}`);
   }

@@ -1,69 +1,61 @@
 
-
-<div class="inn-title">
-  <h4>Affecter une formation a un client</h4>
-  <p>Airtport Hotels The Right Way To Start A Short Break Holiday</p>
-</div>
-<div class="bor">
-  <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-    <div class="row">
-      <div class="input-field col s12"  [hidden]="panier.id===undefined" >
-        <div class="form-group"  >
-          
-          <input  type="text" class="form-control" id="id" name="id" [(ngModel)]="panier.id" formControlName="id" readonly>
-          <label *ngIf="panier.id===undefined" for="id" class="">Id</label>
+          <!--== User Details ==-->
+          <div class="sb2-2-3">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="box-inn-sp">
+                        <div class="inn-title">
+                            <h4>Matieres Details</h4>
+                            <p>All about Matieres, program structure, fees, best course lists (ranking), syllabus, teaching techniques and other details.</p>
+                        </div>
+                        <!--
+                        <div class="tab-inn">
+                          <div class="form-group mb-2">
+                            <input type="text" name="search" class="form-control" [(ngModel)]="searchText">     
+                          </div>  
+                          <div class="table-responsive table-desi">
+                           
+                                <table class="table table-hover">
+                                    <thead>
+                                      <tr>
+                                        <th > id</th>    
+                                        <th > Salle</th>  
+                                        <th > Date </th>  
+                                        <th > heure Debut</th>    
+                                        <th > heure Fin</th>  
+                                        <th > Matiere</th>   
+                                        <th > Formateur</th>   
+                                        
+                                        <th> actions  </th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                       <tr *ngFor="let reservation of reservations | filter: searchText">
+                                        <td >{{reservation.id}}</td>
+                                        <td >{{reservation.salle.code}}</td>
+                                        <td >{{reservation.date}}</td>
+                                        <td >{{reservation.creneau.heureDebut}}</td>
+                                        <td >{{reservation.creneau.heureFin}}</td>
+                                        <td >{{reservation.matiere.nom}}</td>
+                                        <td >{{reservation.formateur.nom}}</td>
+                  <td><a [routerLink]="['/dashboard/reservation', reservation.id]" class="ad-st-view">Edit</a></td>
+                  <button type="submit" (click)="delete(reservation.id)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <span class="d-none d-md-inline">Delete</span>
+              </button>
+                                        </tr>
+                                      
+                                    </tbody>
+                                </table>
+                               
+                            </div>
+                        </div>
+                      -->
+                        <div class="container">
+                          <full-calendar [options]="calendarOptions"></full-calendar>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-      </div>
+      
         
-      </div>
-      <div class="row">
-         
-          <div class="input-field col s12">
-            <div class="form-group"  >
-              <mat-form-field appearance="fill" >
-
-                  <mat-label>Formation</mat-label>
-                  <mat-select 
-                 
-                  [disabled]="idc!==undefined"
-                     [compareWith]="compareObjects"
-                     [(value)]="sClient" class="form-control" 
-                     id="client" 
-                     data-cy="client" 
-                     name="client" 
-                     formControlName="client" 
-                     (selectionChange)="onChange($event)"
-                     >
-                  <mat-option>None</mat-option>
-                  <mat-option selected="sClient.id===client.id" *ngFor="let client of clients" [value]="client">{{client.nom}} </mat-option>
-                  </mat-select>
-              </mat-form-field>
-      </div>
-             </div>
-      </div>
-      <div class="row">
-          <div class="input-field col s12">
-          <div class="form-group" >
-  <label class="form-label" for="matiere">Formations</label>
-  <ng-multiselect-dropdown
-        [(ngModel)]="selectedItemsRoot"
-        [placeholder]="'Choisir les formation du client'"
-        [settings]="dropdownSettings"
-        [data]='dropdownList'
-       
-        class="form-control" id="formation" data-cy="formation" name="formation" formControlName="formation"
-      >
-      </ng-multiselect-dropdown>
-</div>
-          </div>
-      </div>
-         
-      <div class="row">
-          <div class="input-field col s12">
-              <i class="waves-effect waves-light btn-large waves-input-wrapper" ><input type="submit" class="waves-button-input" value="Submit"></i>
-          </div>
-      </div>
-  </form>
-</div>
-

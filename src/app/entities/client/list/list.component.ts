@@ -127,7 +127,7 @@ export class DeleteDialogue {
         this.dialogRef.close(  this.data  )},
       error:()=>{
         this.succesMsg = undefined ;
-        this.errorMsg = 'Cette matiere est inscrite dans une formation' ;
+        this.errorMsg = 'Ce client est inscrit dans une formation' ;
         this.isDeleteFailed = true;
         this.isDeleteSucces=false ; 
         this.data.res = {

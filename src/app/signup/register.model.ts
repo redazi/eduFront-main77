@@ -6,6 +6,7 @@ export interface IRegister {
      age? : number,
     cin? : string ,
      password?: string
+     picByte?  : string ;
     
    
   }
@@ -18,6 +19,7 @@ export interface IRegister {
      public age? : number,
      public cin? : string ,
      public password?: string,
+     public picByte?  : string ,
      
 	   
     ) {}

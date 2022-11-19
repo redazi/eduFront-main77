@@ -1,6 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { Reservation } from '../../reservation/reservation.model';
+import { ReservationService } from '../../reservation/service/reservation.service';
 import { Panier } from '../panier.model';
 import { PanierService } from '../service/panier.service';
 
@@ -20,10 +22,13 @@ export class PanierListComponent implements OnInit {
   isShow: boolean | undefined;
   topPosToStartShowing = 100;
   paniers : Panier[] | undefined;
-  constructor(private panierservice : PanierService , public dialog: MatDialog) { }
+  reservations : Reservation[] | undefined;
+  reservations1 : Reservation[] | undefined;
+  constructor(private panierservice : PanierService ,private reservationservice : ReservationService , public dialog: MatDialog) { }
   ngOnInit(): void {
     
     this.get();
+    //this.getfinal();
     this.ionViewDidLoad()
   }
 
@@ -36,10 +41,58 @@ export class PanierListComponent implements OnInit {
 }
 
   private get() : void {
-    this.panierservice.list().subscribe(data=> {
+    this.panierservice.getplanification().subscribe(data=> {
       this.paniers = data ;
+      console.log(this.paniers.length)
+      this.paniers?.forEach(element => {
+        console.log(element.planification?.id);
+       this.reservationservice.listPlanif(element.planification?.id).subscribe(data=> {
+          this.reservations=data ;
+
+          console.log("aanaaa hnaaaa :")
+         element.reservations=this.reservations;
+            this.reservations1 = this.reservations;
+   
+            element.reservations.forEach(element1 => {
+              console.log("aanaaa hnaaaa : "+element1.date);
+             });
+             
+        
+
+         
+        })
+     
+        //console.log(element.id);
+     
+    
+       });
+       
+
+
+
     })
   }
+
+  private getfinal() : void {
+    console.log("aanaaa hnaaaa :22222")
+    console.log(this.paniers?.length);
+   this.paniers?.forEach(element => {
+    console.log(element.planification?.id);
+   /* this.reservationservice.listPlanif(element.planification?.id).subscribe(data=> {
+      this.reservations=data ;
+    })*/
+    console.log("aanaaa hnaaaa :")
+    console.log(element.id);
+
+
+   });
+   
+  
+
+
+    
+  }
+
 
   delete(id: number): void {
    // this.matiereService.delete(id).subscribe(() => {

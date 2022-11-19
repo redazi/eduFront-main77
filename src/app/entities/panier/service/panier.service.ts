@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
+import { Client } from '../../client/client.model';
 import { Panier } from '../panier.model';
 
 @Injectable({
@@ -15,6 +16,12 @@ export class PanierService {
   list():Observable<Panier[]>{
     return this.httpClient.get<Panier[]>(`${this.baseURL}`);
   }
+  checkIfDejaExistist(id:number):Observable<Panier[]>{
+    return this.httpClient.get<Panier[]>(`${this.baseURL}/checkIfDejaExist/${id}`);
+  }
+  getuser():Observable<Client>{
+    return this.httpClient.get<Client>(`${this.baseURL}/getuser`);
+  }
 
   notifyAboutChange() {
     this.subjectNotifier.next(null);
@@ -22,9 +29,12 @@ export class PanierService {
   add(panier : Panier) : Observable<Object> {
     return this.httpClient.post(`${this.baseURL}` , panier);
   }
-
+  
   get(id:number):Observable<Panier>{
     return this.httpClient.get<Panier>(`${this.baseURL}/${id}`)
+  }
+  getplanification():Observable<Panier[]>{
+    return this.httpClient.get<Panier[]>(`${this.baseURL}/getplanification`)
   }
   update(id:number , panier: Panier): Observable<Object>{
     return this.httpClient.put(`${this.baseURL}/${id}`,panier)

@@ -4,6 +4,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Client } from '../../client/client.model';
 import { ClientService } from '../../client/service/client.service';
+import { Absenceinfo } from '../absenceinfo.model';
 import { AbsenceinfoService } from '../service/absenceinfo.service';
 
 @Component({
@@ -17,7 +18,8 @@ export class AbsenceinfoUpdateComponent implements OnInit {
   client: Client = new Client();
   retrievedImage : any;
   data1: number | undefined;
-  constructor(public absenceService : AbsenceinfoService,public clientService : ClientService,public dialog: MatDialog,private router : Router, protected fb: UntypedFormBuilder , protected activatedRoute : ActivatedRoute) { }
+  test !: Absenceinfo[];
+  constructor(public absenceService : AbsenceinfoService,public clientService : ClientService,public dialog: MatDialog,public dialog2: MatDialog,private router : Router, protected fb: UntypedFormBuilder , protected activatedRoute : ActivatedRoute) { }
 
   ngOnInit(): void {
     this.id =this.activatedRoute.snapshot.params["id"];
@@ -54,7 +56,19 @@ export class AbsenceinfoUpdateComponent implements OnInit {
   
   }
   onclick2(): void {
-    
+    this.absenceService.checkUnmarkedAbsence(this.id).subscribe(data =>{
+     this.test=data;
+     
+      console.log(data); 
+
+    },
+    error => console.log(error)
+    )
+  if(this.test.length>0){
+    this.openDialog2('500ms', '500ms');
+console.log("you cant do that")
+
+  }else{
     this.absenceService.updateabsencevalidation(this.id).subscribe(data =>{
       console.log(data);
       this.openDialog('500ms', '500ms');
@@ -63,8 +77,9 @@ export class AbsenceinfoUpdateComponent implements OnInit {
     },
     error => console.log(error)
     )
-  
   }
+}
+  
   onclick1(idclient: any,cin : any): void {
    // console.log("onclick1 bdaaat")
     //this.client1= this.clientService.get(idClient);
@@ -86,6 +101,15 @@ export class AbsenceinfoUpdateComponent implements OnInit {
     console.log("onclick1 salaaaaaaaaaaat")
     console.log("ezfezfefe")
   
+  }
+  openDialog2(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    let dialogRef1 = this.dialog2.open(DeleteAlertDialog, {
+      width: '500px',
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+
+   
   }
   
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
@@ -128,5 +152,19 @@ export class SuccessAlertDialog {
   closeDialog() {
     //Write your stuff here
     this.dialogRef.close(); // <- Closes the dialog
+  }
+}
+@Component({
+  selector: 'dialog-elements-example-dialog',
+  templateUrl: 'delete-dialog.html',
+})
+export class DeleteAlertDialog {
+  constructor(public dialogRef1: MatDialogRef<DeleteAlertDialog>) {
+
+  }
+
+  closeDialog() {
+    //Write your stuff here
+    this.dialogRef1.close(); // <- Closes the dialog
   }
 }
