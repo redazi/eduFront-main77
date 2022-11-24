@@ -1,0 +1,73 @@
+<div class="box-inn-sp">
+    <div class="inn-title">
+        <h4>Etudiants Details</h4>
+        <p>All about Etudiants, program structure, fees, best course lists (ranking), syllabus, teaching techniques and other details.</p>
+    
+    </div>
+
+    
+    <div class="tab-inn">
+        <div class="table-responsive table-desi">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                      <tr>
+                        <th > image</th>     
+                        <th > nom</th>    
+                        <th > prenom</th>   
+                        <th > cin</th> 
+                        <th > Date </th>  
+                      <th > heure Debut</th>    
+                       <th > heure Fin</th>  
+                             <th > Matiere</th>   
+                         <th > Formateur</th> 
+
+                     
+
+<th>Absence</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let absenceinfo of absenceinfos ">
+                      <td> <img [src]="absenceinfo!.client!.picByte" width="170" height="140">
+                        </td>
+                      
+                       
+                        <td >{{absenceinfo.client?.nom}}</td>
+                        <td >{{absenceinfo.client?.prenom}}</td>
+                       
+                        <td >{{absenceinfo.client?.cin}}</td>
+                           
+                        <td >{{absenceinfo.reservation?.date}}</td>
+                        <td >{{absenceinfo.reservation?.creneau?.heureDebut}}</td>
+                        <td >{{absenceinfo.reservation?.creneau?.heureFin}}</td>
+                        <td >{{absenceinfo.reservation?.matiere?.libelle}}</td>
+                        <td >{{absenceinfo.reservation?.formateur?.nom}}</td>
+                        
+                        <td *ngIf="absenceinfo.status != null">{{absenceinfo.status}}</td>
+                                <td *ngIf="absenceinfo.status == null">pas encore marker</td>
+
+                       
+                    
+                      
+          
+                    </tr>
+                   
+                </tbody>
+            </table>
+        
+        </div>
+   
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+

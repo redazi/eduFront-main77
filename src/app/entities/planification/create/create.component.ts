@@ -13,13 +13,14 @@ import { Client } from '../../client/client.model';
 import { ClientService } from '../../client/service/client.service';
 import { Formation } from '../../formation/formation.model';
 import { FormationService } from '../../formation/service/formation.service';
+import { PanierService } from '../../panier/service/panier.service';
 import { Actions2Dialog, ExtendDialog } from '../../reservation/list/list.component';
 import { Plannification } from '../../reservation/plannification.model';
 import { Reservation } from '../../reservation/reservation.model';
 import { ReservationService } from '../../reservation/service/reservation.service';
 import {  ReservationUpdateComponent } from '../../reservation/update/update.component';
 import { IPanier, Panier } from '../panier.model';
-import { PanierService } from '../service/panier.service';
+
 @Component({
   selector: 'dialog-elements-example-dialog',
   templateUrl: 'succes-alert-dialog.html',
@@ -35,13 +36,13 @@ export class SuccessAlertDialog {
   }
 }
 
-@Component({
-  selector: 'app-update',
-  templateUrl: './update.component.html',
-  styleUrls: ['./update.component.css']
-})
 
-export class PanierUpdateComponent implements OnInit {
+@Component({
+  selector: 'app-create',
+  templateUrl: './create.component.html',
+  styleUrls: ['./create.component.css']
+})
+export class PlanificationCreateComponent implements OnInit {
   day : number | undefined ;
   reservations: Reservation[] | undefined ;
   searchText : any ;

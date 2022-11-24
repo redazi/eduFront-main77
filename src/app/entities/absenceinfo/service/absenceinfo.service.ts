@@ -30,6 +30,10 @@ export class AbsenceinfoService {
   listReservation():Observable<Reservation[]>{
     return this.httpClient.get<Reservation[]>(`${this.baseURL}/listeReservation`);
   }
+  absenceinfobyclient():Observable<Absenceinfo[]>{
+    return this.httpClient.get<Absenceinfo[]>(`${this.baseURL}/absenceinfobyclient`);
+  }
+  
   listReservationvalide():Observable<Reservation[]>{
     return this.httpClient.get<Reservation[]>(`${this.baseURL}/listeReservationvalide`);
   }

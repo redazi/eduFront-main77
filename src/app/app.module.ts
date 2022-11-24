@@ -67,6 +67,11 @@ import { FormateurListComponent } from './entities/formateur/list/list.component
 import { FormateurUpdateComponent } from './entities/formateur/update/update.component';
 import { PanierUpdateComponent } from './entities/panier/update/update.component';
 import { PanierListComponent } from './entities/panier/list/list.component';
+import { PlanificationCreateComponent } from './entities/planification/create/create.component';
+import {  MonbsenceComponent } from './entities/monabsence/create/create.component';
+import { ListeetudiantComponent } from './entities/reservation-etudiant/listeetudiant/listeetudiant.component';
+import { ListereservationComponent } from './entities/reservation-etudiant/listereservation/listereservation.component';
+
 
 
 FullCalendarModule.registerPlugins([ 
@@ -134,7 +139,10 @@ FullCalendarModule.registerPlugins([
      FormateurUpdateComponent ,
      PanierUpdateComponent,
      PanierListComponent,
- 
+     PlanificationCreateComponent,
+     MonbsenceComponent,
+     ListeetudiantComponent,
+     ListereservationComponent
   ],
   imports: [
     FullCalendarModule,

@@ -1,0 +1,55 @@
+<!--== User Details ==-->
+<div class="sb2-2-3">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box-inn-sp">
+                <div class="inn-title">
+                    <h4>Reservation Details</h4>
+                    <p>All about Reservation, program structure, fees, best course lists (ranking), syllabus, teaching techniques and other details.</p>
+                </div>
+                <div class="tab-inn">
+                  <div class="form-group mb-2">
+                    <input type="text" name="search" class="form-control" >     
+                  </div>  
+                  <div class="table-responsive table-desi">
+                        <table class="table table-hover">
+                            <thead>
+                              <tr>
+                                <th > id</th>    
+                                <th > client</th>  
+                                <th > Date </th>  
+                                <th > heure Debut</th>    
+                                <th > Matiere</th>   
+                                <th > Formateur</th>   
+                                
+                                <th>  l'Absence  </th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                               <tr *ngFor="let absence of absenceinfos ">
+                                <td >{{absence.id}}</td>
+                                <td >{{absence.client.userName}}</td>
+                                <td >{{absence.reservation.date}}</td>
+                                <td >{{absence.reservation.creneau.heureDebut}}</td>
+                     
+                                <td >{{absence.reservation.matiere.nom}}</td>
+                                <td >{{absence.reservation.formateur.nom}}</td>
+                                <td *ngIf="absence.status != null">{{absence.status}}</td>
+                                <td *ngIf="absence.status == null">pas encore marker</td>
+          
+                                </tr>
+                              
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

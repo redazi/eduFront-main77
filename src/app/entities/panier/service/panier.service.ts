@@ -30,6 +30,10 @@ export class PanierService {
     return this.httpClient.post(`${this.baseURL}` , panier);
   }
   
+  getplanifbyres(id:number):Observable<any>{
+    return this.httpClient.get<any>(`${this.baseURL}/getplanifbyres/${id}`)
+  }
+
   get(id:number):Observable<Panier>{
     return this.httpClient.get<Panier>(`${this.baseURL}/${id}`)
   }

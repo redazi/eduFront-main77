@@ -19,8 +19,12 @@ import { FormationUpdateComponent } from './entities/formation/update/update.com
 import { MatiereDetailComponent } from './entities/matiere/detail/detail.component';
 import { MatiereListComponent } from './entities/matiere/list/list.component';
 import { MatiereUpdateComponent } from './entities/matiere/update/update.component';
+import {  MonbsenceComponent } from './entities/monabsence/create/create.component';
 import { PanierListComponent } from './entities/panier/list/list.component';
 import { PanierUpdateComponent } from './entities/panier/update/update.component';
+import { PlanificationCreateComponent } from './entities/planification/create/create.component';
+import { ListeetudiantComponent } from './entities/reservation-etudiant/listeetudiant/listeetudiant.component';
+import { ListereservationComponent } from './entities/reservation-etudiant/listereservation/listereservation.component';
 import { ReservationListComponent } from './entities/reservation/list/list.component';
 import { ReservationUpdateComponent } from './entities/reservation/update/update.component';
 import { SalleReservationListComponent } from './entities/salle-reservation/list/list.component';
@@ -99,7 +103,24 @@ const routes: Routes = [
     {
       path: 'sallesreservation',
       component: SalleReservationListComponent,
-    },    
+    },   {
+      path: 'planification',
+      component: PlanificationCreateComponent,
+    },  
+    {
+      path: 'monabsence',
+      component: MonbsenceComponent,
+    },
+    {
+      path: 'listeetudiant/:id',
+      component: ListeetudiantComponent,
+    }
+    ,
+    {
+      path: 'listereservation',
+      component: ListereservationComponent,
+    }
+    ,
     {path:"formateur" , component :  FormateurListComponent },
     {path:"ajouterFormateur" , component : FormateurUpdateComponent } ,
     {path: 'formateur/:id', component:FormateurUpdateComponent},
